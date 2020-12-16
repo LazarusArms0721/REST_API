@@ -7,7 +7,7 @@ import dotenv from 'dotenv/config.js';
 
 
 
-import songsRoutes from './routes/songs.js';
+import songsRoutes from '../routes/songs.js';
 
 const app = express();
 const PORT = 5000;

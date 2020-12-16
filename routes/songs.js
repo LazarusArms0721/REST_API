@@ -1,4 +1,4 @@
-import express from 'express';
+import express from './express';
 import { v4 as uuidv4 } from 'uuid';
 // import { createSongs } from '../controllers/songs.js';
 
@@ -36,12 +36,6 @@ router.get('/', async (req, res) => {
         });
     });
 
-    // try {
-    //     const songs = await ;
-    //
-    // } catch(err) {
-    //     res.json({message: err});
-    // }
 
 });
 
@@ -57,6 +51,7 @@ router.post('/', async (req,res) => {
     try {
     const savedSong = await song.save();
     res.json(savedSong);
+    res.sendStatus(200);
     } catch(err) {
         res.json({message: err});
     }
@@ -67,6 +62,7 @@ router.get('/:id', async (req, res) => {
     try {
         const song = await Song.findById(req.params.id);
         res.json(song);
+        res.sendStatus(200);
     } catch(err) {
         res.json({message: err});
     }
@@ -76,8 +72,10 @@ router.delete('/:id', async (req,res) =>{
     try {
         const removedSong = await Song.remove({_id: req.params.id });
         res.json(removedSong);
+        res.sendStatus(200);
     } catch(err) {
         res.json({message: err});
+
     }
 
 });
